@@ -266,15 +266,41 @@ environment {
   QT_QPA_PLATFORMTHEME "xdgdesktopportal"
   XDG_CURRENT_DESKTOP "KDE"
   KDE_SESSION_VERSION "6"
-  XCURSOR_THEME "Bibata-Modern-Ice"
   XCURSOR_SIZE "24"
-  GTK_CURSOR_THEME "Bibata-Modern-Ice"
   GTK_USE_PORTAL "1"
+
+  // Active Cursor Theme
+  XCURSOR_THEME "MacTahoe"
+  GTK_CURSOR_THEME "MacTahoe"
+
+  // Available Cursor Themes (uncomment one to activate):
+  // XCURSOR_THEME "MacTahoe-light"
+  // GTK_CURSOR_THEME "MacTahoe-light"
+  // XCURSOR_THEME "nordic_cursors_scalable"
+  // GTK_CURSOR_THEME "nordic_cursors_scalable"
+  // XCURSOR_THEME "ArcDusk-cursors"
+  // GTK_CURSOR_THEME "ArcDusk-cursors"
+  // XCURSOR_THEME "Sunset-cursors"
+  // GTK_CURSOR_THEME "Sunset-cursors"
+  // XCURSOR_THEME "Adwaita"
+  // GTK_CURSOR_THEME "Adwaita"
+  // XCURSOR_THEME "Bibata-Modern-Ice"
+  // GTK_CURSOR_THEME "Bibata-Modern-Ice"
 }
 
 cursor {
-    xcursor-theme "Bibata-Modern-Ice" // Replace with your theme name
-    xcursor-size 24               // Set your desired size
+    xcursor-size 24
+
+    // Active Cursor Theme
+    // xcursor-theme "MacTahoe"
+
+    // Available Cursor Themes (uncomment one to activate):
+    xcursor-theme "MacTahoe-light"
+    // xcursor-theme "nordic_cursors_scalable"
+    // xcursor-theme "ArcDusk-cursors"
+    // xcursor-theme "Sunset-cursors"
+    // xcursor-theme "Adwaita"
+    // xcursor-theme "Bibata-Modern-Ice"
 }
 
 hotkey-overlay {
@@ -475,7 +501,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: ghostty " { spawn "ghostty"; }
     // Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
