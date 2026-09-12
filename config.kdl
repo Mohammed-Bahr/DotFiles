@@ -1,17 +1,13 @@
 // Set the wallpaper on the overview tab (Mod + Space).
 layer-rule {
-    match namespace="^(noctalia-)?wallpaper$"
+    // match namespace="^(noctalia-)?wallpaper$"
+    match namespace="noctalia-backdrop"
     place-within-backdrop true
+    // background-effect {
+    //   blur true
+    // }
 }
 
-// Fully disable blur on Noctalia's shared background surface
-// (this is what renders behind the bar, and also the make the bar panel dimmer)
-layer-rule {
-  // match namespace="^noctalia-background-.*$"
-  background-effect {
-    blur false
-  }
-}
 
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
