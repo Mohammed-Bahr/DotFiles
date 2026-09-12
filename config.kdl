@@ -28,9 +28,9 @@ input {
             // For more information, see xkeyboard-config(7).
 
             // For example:
-            // layout "us,ru"
+            layout "us,ara"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-
+            options "grp:menu_toggle"
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
             // localectl set-x11-keymap.
@@ -292,10 +292,10 @@ cursor {
     xcursor-size 24
 
     // Active Cursor Theme
-    // xcursor-theme "MacTahoe"
+    xcursor-theme "MacTahoe"
 
     // Available Cursor Themes (uncomment one to activate):
-    xcursor-theme "MacTahoe-light"
+    // xcursor-theme "MacTahoe-light"
     // xcursor-theme "nordic_cursors_scalable"
     // xcursor-theme "ArcDusk-cursors"
     // xcursor-theme "Sunset-cursors"
@@ -480,7 +480,7 @@ window-rule {
 }
 
 binds {
-
+    Menu { switch-layout "next"; }
     Mod+D { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 
     // Custom App Shortcuts
