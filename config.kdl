@@ -77,7 +77,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen (focus-follows-mouse max-scroll-amount="0%")
-    // focus-follows-mouse
+    focus-follows-mouse
 }
 
 //Support laptop screen and monitor
@@ -477,7 +477,8 @@ window-rule {
 
 binds {
     Menu { switch-layout "next"; }
-    Mod+D { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    // Mod+D { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+Space { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 
     // Custom App Shortcuts
     Mod+E { spawn "nautilus" ; }
@@ -531,7 +532,7 @@ binds {
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
-    Mod+Space repeat=false { toggle-overview; }
+    // Mod+Space repeat=false { toggle-overview; }
 
     Mod+Q repeat=false { close-window; }
 
