@@ -25,8 +25,9 @@ input {
     }
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen (focus-follows-mouse max-scroll-amount="0%")
-    focus-follows-mouse max-scroll-amount="90%"
-    // focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="100%"
+
+    trackpoint
 }
 
 // Outputs are left on auto-detect (works for both laptop screen + external monitor).
@@ -103,20 +104,21 @@ window-rule {
 
 // Fix WezTerm's initial-configure sizing bug.
 window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+    match app-id=r"^org\.wezfurlong\.wezterm$"
+    default-column-width {
+    }
 }
 
 // zen picture-in-picture opens floating.
 window-rule {
-    match app-id=r#"zen$"# title="^Picture-in-Picture$"
+    match app-id=r"zen$" title="^Picture-in-Picture$"
     open-floating true
 }
 
 // Noctalia/Quickshell UI elements shouldn't get tiled — merged into one rule
 // since niri treats multiple `match` lines in a rule as OR.
 window-rule {
-    match app-id=r#"org\.quickshell$"#
+    match app-id=r"org\.quickshell$"
     match app-id="^quickshell$"
     match app-id="^noctalia-shell$"
     open-floating true
@@ -124,7 +126,7 @@ window-rule {
 
 // Zoom menus/popups: don't round corners or clip them.
 window-rule {
-    match app-id=r#"^(us\.zoom\.Zoom|zoom)$"#
+    match app-id=r"^(us\.zoom\.Zoom|zoom)$"
     open-floating true
     geometry-corner-radius 0
     clip-to-geometry false
@@ -135,7 +137,7 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
-    opacity 0.95
+    opacity 0.9
 }
 
 window-rule {
@@ -147,6 +149,10 @@ window-rule {
 
 window-rule {
     draw-border-with-background false
+    opacity 0.8
+    background-effect {
+        blur true
+    }
 }
 
 // --- Keybinds ---
@@ -163,13 +169,13 @@ binds {
     // Media / volume / brightness
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
+    XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down"; }
 
     Mod+Q repeat=false { close-window; }
@@ -231,10 +237,10 @@ binds {
     Mod+Shift+U         { move-workspace-down; }
     Mod+Shift+I         { move-workspace-up; }
 
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+Ctrl+WheelScrollUp cooldown-ms=150 { move-column-to-workspace-up; }
     Mod+WheelScrollRight      { focus-column-right; }
     Mod+WheelScrollLeft       { focus-column-left; }
     Mod+Ctrl+WheelScrollRight { move-column-right; }
