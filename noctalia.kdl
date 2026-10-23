@@ -10,6 +10,8 @@ layout {
         active-color "#98971a"
         inactive-color "#fbf1c7"
         urgent-color "#cc241d"
+
+        width 1
     }
 
 
