@@ -148,9 +148,10 @@ window-rule {
     }
 }
 
+
+// window for the blur background 
 window-rule {
     draw-border-with-background false
-    // opacity 0.85
     background-effect {
         blur true
     }
@@ -158,12 +159,17 @@ window-rule {
 
 window-rule {
     match app-id="zen"
-    opacity 0.95
+    opacity 1.00
 }
 window-rule {
     match app-id="obsidian"
     opacity 0.85
 }
+// window-rule {
+//     match app-id="ghostty"
+//     opacity 0.80
+// }
+
 
 
 
