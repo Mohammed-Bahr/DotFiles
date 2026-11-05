@@ -2,10 +2,17 @@
 
 // Keep the noctalia wallpaper backdrop layer behind normal windows.
 // Uncomment background-effect to blur whatever's behind the backdrop layer.
+// layer-rule {
+//     match namespace="noctalia-backdrop"
+//     place-within-backdrop true
+// }
+
+
 layer-rule {
-    match namespace="noctalia-backdrop"
-    place-within-backdrop true
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
 }
+
 
 input {
     keyboard {
@@ -138,7 +145,7 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
-    opacity 0.80
+    opacity 1.00
 }
 
 window-rule {
@@ -157,20 +164,54 @@ window-rule {
     }
 }
 
+/* Apps: blur them all without xray so it looks more realistic. */
 window-rule {
-    match app-id="zen"
-    opacity 1.00
+  background-effect {
+    blur true
+    xray false
+  }
 }
+
+/*
+  Noctalia
+  Disable xray on all our surfaces so it looks more realistic.
+  Noctalia publishes blur regions automatically when ext-background-effects is available.
+*/
+layer-rule {
+  match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+    // blur false
+  }
+}
+
+/* Enable blur on noctalia's window switcher and disable xray. */
+layer-rule {
+    match namespace="noctalia-window-switcher"
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+/* You can also fine-tune the blur effect globally. */
+blur {
+  passes 3        // more passes = stronger blur (default: 3)
+  offset 3.0      // sample distance per pass (default: 3.0)
+  noise 0.03      // grain overlay (default: 0.02)
+  saturation 1.0  // color saturation boost (default: 1.5)
+}
+
 window-rule {
-    match app-id="obsidian"
-    opacity 0.85
+    match app-id="ghostty"
+    opacity 0.80
 }
-// window-rule {
-//     match app-id="ghostty"
-//     opacity 0.80
-// }
 
 
+window-rule {
+    match app-id="zed"
+    opacity 0.80
+}
 
 
 // --- Keybinds ---
