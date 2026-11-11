@@ -219,6 +219,8 @@ binds {
     Menu { switch-layout "next"; }
     Mod+Space { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Mod+E { spawn "nautilus"; }
+    Mod+Z {spawn "zed"; }
+    Mod+O {spawn "obsidian"; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty " { spawn "ghostty"; }
     Mod+Shift+T hotkey-overlay-title="Open a Terminal: warp " { spawn "warp-terminal"; }
