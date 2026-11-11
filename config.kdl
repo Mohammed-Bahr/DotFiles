@@ -236,8 +236,9 @@ binds {
     XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
-    XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down"; }
+    // Empty target arg = current monitor, "1" = step size in percent (default is 10).
+    XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia" "msg" "brightness-up" "" "1"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "" "1"; }
 
     Mod+Q repeat=false { close-window; }
 
